@@ -1,0 +1,21 @@
+{
+  "name": {
+    "en": "Conversions"
+  },
+  "description": {
+    "en": "Adds a conversions array to the tender object to describe used conversions together with their available coefficients"
+  },
+  "documentationUrl": {
+    "en": "https://github.com/uStudioCompany/ocdsp_conversions"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_requirements_extension/master/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_metrics_extension/master/extension.json"
+  ]
+}
