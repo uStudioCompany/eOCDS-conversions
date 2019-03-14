@@ -1,4 +1,12 @@
-For [MTender](https://www.mtender.gov.md) we are planning to use the following approach: 
+### Background
+
+Under preparation of the contract, notice CA has to indicate an awarding methodology which will be used to award a winning offer. OCDS covers this part of the notice with *awardCriteria*. But this approach only indicates a methodology, without describing a set of used criteria. To allow CA to include such set into the Contract Notice, separate OCDS extension has to be used - *ocds_requirements_extension*
+
+- Original repository for [ocds_requirements_extension](https://github.com/open-contracting-extensions/ocds_requirements_extension)
+
+Initially, this extension covers so-called exclusion grounds and selection criteria or together - ESPD. Here each EO who wants to participate in this specific contracting process has to complete a ‘form’ by adding either boolean answer (yes/no) or fill some specific data (like yearly turnover, the quantity of employees etc). 
+
+But in case of awarding methodology based on quality or rated criteria its not enough. Additionally, quantitative criteria and applicable options and weights have to be described as well. For this reason, a separate internal extension can be applied - *conversions*
 
 # Conversions
 
