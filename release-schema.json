@@ -1,0 +1,280 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties":{  
+        "conversions": {
+          "title": "Conversions",
+          "description": "A list of weightings for the used criteria or applicable options",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Conversion"
+          }
+        }
+      }
+    },
+    "Requirement": {
+      "properties": {
+        "options": {
+          "title": "Requirement options",
+          "description": "A set of available prescribed options for this requirement",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Option"
+          }
+        }
+      }
+    },
+    "Observation": {
+      "properties": {
+        "options": {
+          "title": "Observation options",
+          "description": "A set of available prescribed options for this observation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Option"
+          }
+        }
+      }
+    },
+    "Conversion": {
+      "title": "Conversion",
+      "description": "Conversion is used to describe conversions and its coefficients applicable for specific value received for requirement or observation",
+      "type": "object",
+      "properties": {
+        "id":{
+          "title": "Identifier",
+          "description": "An identifier for this conversion.",
+          "type":[
+            "integer",
+            "string"
+          ]
+        },
+        "relatesTo": {
+          "title": "Related schema element",
+          "description": "The schema element that the conversion applies. For example, the conversion may be defined against a requirement or against a metric.",
+          "type": "string",
+          "openCodelist": false,
+          "codelist":"conversionRelatesTo.csv",
+          "enum": [
+            "requirement",
+            "observation"
+          ]
+        },
+        "relatedItem": {
+          "title": "Related item",
+          "description": "Where 'relatesTo' is not empty this field must be populated with the id of the item in this tender section which the conversion relates to.",
+          "type": "string"
+        },
+        "rationale": {
+          "title": "Conversion rationale",
+          "description": "The free-text rationale of using of this conversion",
+          "type": "string"
+        },
+        "description": {
+          "title": "Conversion Details",
+          "description": "Free texrt description of this conversion could be shared here",
+          "type": "string"
+        },
+        "coefficients": {
+          "title": "Coefficients",
+          "description": "A list of applicable coefficients for this conversion",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coefficient"
+          }
+        }
+      }
+    },
+    "Coefficient": {
+      "title": "Coefficient",
+      "description": "A coefficient applied in case of the value of prescribed attribute matches",
+      "type": "object",
+      "properties": {
+        "id":{
+          "title": "Identifier",
+          "description": "An identifier for this coefficient.",
+          "type":[
+            "integer",
+            "string"
+          ]
+        },
+        "value": {
+          "title": "Requirement value",
+          "description": "Value of related 'requirement' or one of available 'options' if applicable received through 'requirementResponse'",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "minValue": {
+          "title": "Inducative minimum requirement value",
+          "description": "Indicative minimum value of related 'requirement' or one of available 'options' if applicable received through 'requirementResponse'",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "maxValue": {
+          "title": "Indicative maximum value",
+          "description": "Indicative maximum value of related 'requirement' or one of available 'options' if applicable received through 'requirementResponse'",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "period": {
+          "title": "Period",
+          "description": "Used to specify a particular period the conversion and its coefficients are applies to",
+          "$ref": "#/definitions/Period"
+        },
+        "coefficient": {
+          "title": "Coefficient",
+          "description": "Precise value that has to be applied for conversion in specific case",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "formula": {
+          "title": "Formula",
+          "description": "Where mathematical formula is used to calculate precise value that has to be applied for conversion in specific case this field must be populated with such formula",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Option": {
+      "title": "Option",
+      "description": "Available prescribed option for requirement/observation that can be set as a value for bid.requirementResponse/award. ... .observation",
+      "type": "object",
+      "properties": {
+        "id":{
+          "title": "Identifier",
+          "description": "An identifier for this option.",
+          "type":[
+            "integer",
+            "string"
+          ]
+        },
+        "title": {
+          "title": "Title",
+          "description": "Title for this option",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "description": "Brief free-text description for this option",
+          "type": "string"
+        },
+        "value": {
+          "title": "Option value",
+          "description": "Value applicable for this option",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "minValue": {
+          "title": "Option minimum value",
+          "description": "Minimum value applicable for this option",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "maxValue": {
+          "title": "Option maximum value",
+          "description": "Maximum value applicable for this option",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "period": {
+          "title": "Period",
+          "description": "Used to specify a particular period as available option",
+          "$ref": "#/definitions/Period"
+        },
+        "measure": {
+          "title": "Measure",
+          "description": "For the options of non-financial metrics, the measure of this metric, target or actual observation. Measures may be provided as free text or numerical values.",
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "title": "Unit",
+          "description": "Unit of measure available under this option",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Unit name",
+              "description": "The name of the unit."
+            },
+            "scheme": {
+              "title": "Scheme",
+              "description": "The list from which units of measure identifiers are taken. This should be an entry in the unitClassificationScheme codelist. Use of the scheme 'UNCEFACT' for the UN/CEFACT Recommendation 20 list of 'Codes for Units of Measure Used in International Trade' is recommended.   ",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "unitClassificationScheme.csv",
+              "openCodelist": true
+            },
+            "id": {
+              "title": "ID",
+              "description": "The identifier from the codelist referenced in the schema property. For example, with UNCEFACT, this is the value of the 'Common Code' column. From this identifier, applications can look-up the human readable name or symbol for this unit of measure. ",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "uri": {
+              "title": "URI",
+              "description": "If the scheme used provide a machine-readable URI for this unit of measure, this can be given.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            }
+          }
+        },
+        "dimensions": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "title": "Dimensions",
+          "description": "Any number of dimensions available under this option can be recorded within this object.",
+          "patternProperties": {
+            "^.*": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
