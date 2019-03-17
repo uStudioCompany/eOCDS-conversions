@@ -328,3 +328,7 @@ And the conversion will be:
 So we can see that EO who offers less than 1000 cars will be accepted for evaluation but with 15% lower offer advantage (just due to the increasing total cost of ownership for CA).
 
 A similar approach could be applied where CA needs to tie his spendings with the achieved level of  KPIs by supplier while implementing the contract (e.g. energy efficiency services) or to achieve the best value for money under 'quality-only' procedures.
+
+## Changelog
+
+*options* moved from the context of this extension in favor of another one - [options](https://github.com/uStudioCompany/eOCDS-options) 
